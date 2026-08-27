@@ -48,14 +48,14 @@ sub playerAttack {
 sub playerDefend {
     my ($self) = @_;
     my $damage = 7; # TODO: Un-hardcode later!
-    
+
     $self -> {player} -> takeDamage($damage);
     $self -> {ui} -> playerDefend($self -> {player}, $damage);
 }
 
 sub playerHeal {
     my ($self) = @_;
-    my $success = $self -> {player} -> heal(5);
+    my $success = $self -> {player} -> heal(10);
     $self -> {ui} -> heal($self -> {player}, $success);
 }
 

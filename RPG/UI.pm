@@ -41,6 +41,7 @@ sub status {
     my ($self, $player, $enemy) = @_;
     say("Your HP: " . $player -> {hp});
     say($enemy -> {name} . " HP: " . $enemy -> {hp});
+    say("Remaining heals: " . $player -> {heals});
 }
 
 sub getAction {
@@ -76,12 +77,11 @@ sub playerAttack {
 
 # TODO: Interpolate enemy name
 sub playerDefend {
-    my ($player, $damage) = @_;
+    my ($self, $player, $damage) = @_;
 
     print(
         "You BRACE yourself for the goblin's attack, reducing its damage by 30%.\n",
-        "You take $damage damage!\n",
-        "You now have " . $player -> {hp} . " HP.\n\n"
+        "You take $damage damage!\n"
     );
 }
 
@@ -92,7 +92,7 @@ sub heal {
     if ($success) {
         print(
             "You call for the POWER OF THE GODS. They are amenable to your prayer.\n",
-            "You now have " . $player -> {hp} . " HP."
+            "You now have " . $player -> {hp} . " HP.\n"
         );
     }
 
