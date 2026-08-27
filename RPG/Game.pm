@@ -12,6 +12,7 @@ sub new {
 
     my $player = RPG::Character -> new(
         name   => "Adventurer",
+        hp     => 30,
         maxHp  => 30,
         attack => 10,
         heals  => 3
@@ -19,7 +20,8 @@ sub new {
 
     my $goblin = RPG::Character -> new(
         name   => "Hideous Goblin",
-        max_hp => 30,
+        hp     => 30,
+        maxHp  => 30,
         attack => 10,
     );
 

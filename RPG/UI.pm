@@ -2,6 +2,7 @@ package RPG::UI;
 
 use strict;
 use warnings;
+use feature 'say';
 
 sub new {
     my ($class) = @_;
@@ -30,13 +31,14 @@ sub intro {
 END
 }
 
+# In the functions below, declaring $self is necessary for the other arguments to work
 sub startCombat {
     my ($self, $player, $enemy) = @_;
     $self -> status($player, $enemy);
 }
 
 sub status {
-    my ($player, $enemy) = @_;
+    my ($self, $player, $enemy) = @_;
     say("Your HP: " . $player -> {hp});
     say($enemy -> {name} . " HP: " . $enemy -> {hp});
 }
@@ -63,7 +65,7 @@ sub getAction {
 }
 
 sub playerAttack {
-    my ($enemy, $damage) = @_;
+    my ($self, $enemy, $damage) = @_;
 
     print(
         "You strike the " . $enemy -> {name} . " with your TRUSTY SWORD.\n",
