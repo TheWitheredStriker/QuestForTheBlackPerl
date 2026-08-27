@@ -22,7 +22,7 @@ sub name {
     return $self -> {name};
 }
 
-sub hp() {
+sub hp {
     my ($self) = @_;
     return $self -> {hp};
 }
