@@ -13,4 +13,4 @@ You're an adventurer crawling a dungeon so you can collect the legendary Black P
 - [ ] Items?
 
 # Known bugs
-- [ ] Exiting program with Ctrl-C still evaluates code, producing errors. (Maybe use an `END` block?)
+- [x] Exiting program with Ctrl-C still evaluates code, producing errors. _(Fixed with die statement)_

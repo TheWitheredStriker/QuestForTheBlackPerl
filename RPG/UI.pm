@@ -48,7 +48,7 @@ sub getAction($self) {
         "> "
     );
 
-    my $input = readline(STDIN);
+    my $input = readline(STDIN) or die("Program exited");
     chomp($input); # Trim whitespace
 
     return "attack" if $input eq "1";
