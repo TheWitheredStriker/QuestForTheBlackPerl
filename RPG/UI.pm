@@ -2,15 +2,13 @@ package RPG::UI;
 
 use strict;
 use warnings;
-use feature 'say';
+use feature qw(say signatures);
 
-sub new {
-    my ($class) = @_;
+sub new($class) {
     return bless({}, $class);
 }
 
-sub intro {
-    my ($class, $player) = @_;
+sub intro($self, $player) {
     print <<END;
 
         You are a SPLENDOROUS ADVENTURER in a LAND OF MAGIC.
@@ -32,21 +30,17 @@ END
 }
 
 # In the functions below, declaring $self is necessary for the other arguments to work
-sub startCombat {
-    my ($self, $player, $enemy) = @_;
+sub startCombat($self, $player, $enemy) {
     $self -> status($player, $enemy);
 }
 
-sub status {
-    my ($self, $player, $enemy) = @_;
+sub status($self, $player, $enemy) {
     say("Your HP: " . $player -> {hp});
     say($enemy -> {name} . " HP: " . $enemy -> {hp});
     say("Remaining heals: " . $player -> {heals});
 }
 
-sub getAction {
-    my ($self) = @_;
-
+sub getAction($self) {
     print(
         "[1] Attack\n",
         "[2] Defend\n",
@@ -65,9 +59,7 @@ sub getAction {
     return "invalid";
 }
 
-sub playerAttack {
-    my ($self, $enemy, $damage) = @_;
-
+sub playerAttack($self, $enemy, $damage) {
     print(
         "You strike the " . $enemy -> {name} . " with your TRUSTY SWORD.\n",
         "The " . $enemy -> {name} . " takes $damage damage!\n",
@@ -76,9 +68,7 @@ sub playerAttack {
 }
 
 # TODO: Interpolate enemy name
-sub playerDefend {
-    my ($self, $player, $damage) = @_;
-
+sub playerDefend($self, $player, $damage) {
     print(
         "You BRACE yourself for the goblin's attack, reducing its damage by 30%.\n",
         "You take $damage damage!\n"
@@ -86,9 +76,7 @@ sub playerDefend {
 }
 
 # TODO: Add amount of HP healed
-sub heal {
-    my ($self, $player, $success) = @_;
-
+sub heal($self, $player, $success) {
     if ($success) {
         print(
             "You call for the POWER OF THE GODS. They are amenable to your prayer.\n",
@@ -101,9 +89,7 @@ sub heal {
     }
 }
 
-sub enemyAttack {
-    my ($self, $player, $damage) = @_;
-
+sub enemyAttack($self, $player, $damage) {
     print(
         "The HIDEOUS GOBLIN strikes you with its claw!\n",
         "You take $damage damage!\n",
@@ -111,9 +97,7 @@ sub enemyAttack {
     );
 }
 
-sub endCombat {
-    my ($self, $player, $enemy) = @_;
-
+sub endCombat($self, $player, $enemy) {
     if ($player -> {isAlive}) {
         say("You have SLAIN the " . $enemy -> {name} . "!");
     }

@@ -2,14 +2,13 @@ package RPG::Game;
 
 use strict;
 use warnings;
+use feature 'signatures';
 
 use RPG::Character;
 use RPG::Combat;
 use RPG::UI;
 
-sub new {
-    my ($class) = @_;
-
+sub new($class) {
     my $player = RPG::Character -> new(
         name   => "Adventurer",
         hp     => 30,
@@ -32,8 +31,7 @@ sub new {
     }, $class;
 }
 
-sub run {
-    my ($self) = @_;
+sub run($self) {
     $self -> {ui} -> intro($self -> {player});
 
     my $combat = RPG::Combat -> new(

@@ -2,11 +2,10 @@ package RPG::Character;
 
 use strict;
 use warnings;
+use feature 'signatures';
 
 # Constructor
-sub new {
-    my ($class, %args) = @_;
-
+sub new($class, %args) {
     return bless {
         name   => $args{name},
         hp     => $args{hp},
@@ -17,48 +16,39 @@ sub new {
 }
 
 # Getters
-sub name {
-    my ($self) = @_;
+sub name($self) {
     return $self -> {name};
 }
 
-sub hp {
-    my ($self) = @_;
+sub hp($self) {
     return $self -> {hp};
 }
 
-sub maxHp {
-    my ($self) = @_;
+sub maxHp($self) {
     return $self -> {maxHp};
 }
 
-sub attackPower {
-    my ($self) = @_;
+sub attackPower($self) {
     return $self -> {attack};
 }
 
-sub remainingHeals {
-    my ($self) = @_;
+sub remainingHeals($self) {
     return $self -> {heals};
 }
 
-sub isAlive {
-    my ($self) = @_;
+sub isAlive($self) {
     return $self -> {hp} > 0;
 }
 
 # Setters
-sub takeDamage {
-    my ($self, $amount) = @_;
-
+sub takeDamage($self, $amount) {
     $self -> {hp} -= $amount;
+
     # Prevent negative HP
     $self -> {hp} = 0 if $self -> {hp} < 0;
 }
 
-sub heal {
-    my ($self, $amount) = @_;
-
+sub heal($self, $amount) {
     # Don't heal if we're at max HP or have no heals left
     if ($self -> {heals} <= 0 or $self -> {hp} >= $self -> {maxHp}) {
         return 0;
