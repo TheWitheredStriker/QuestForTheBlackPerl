@@ -15,3 +15,4 @@ You're an adventurer crawling a dungeon so you can collect the legendary Black P
 
 # Known bugs
 - [x] Exiting program with Ctrl-C still evaluates code, producing errors. _(Fixed with die statement)_
+- [x] If both we and the goblin die at the same time, the game considers the goblin to have won. _(Fixed by inverting conditional)_

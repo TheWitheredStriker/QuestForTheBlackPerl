@@ -99,7 +99,7 @@ sub enemyAttack($self, $player, $damage) {
 }
 
 sub endCombat($self, $player, $enemy) {
-    if ($player -> {isAlive}) {
+    unless ($enemy -> {isAlive}) {
         say("You have SLAIN the " . $enemy -> {name} . "!");
     }
 

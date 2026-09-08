@@ -28,6 +28,8 @@ sub run($self) {
         
         $self -> {ui} -> status($self -> {player}, $self -> {enemy});
     }
+
+    $self -> {ui} -> endCombat($self -> {player}, $self -> {enemy});
 }
 
 sub performAction($self, $action) {
