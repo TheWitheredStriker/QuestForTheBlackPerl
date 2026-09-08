@@ -76,10 +76,11 @@ sub playerDefend($self, $player, $damage) {
 }
 
 # TODO: Add amount of HP healed
-sub heal($self, $player, $success) {
+sub heal($self, $player, $success, $amount) {
     if ($success) {
         print(
             "You call for the POWER OF THE GODS. They are amenable to your prayer.\n",
+            "Restored $amount HP!\n",
             "You now have " . $player -> {hp} . " HP.\n\n"
         );
     }

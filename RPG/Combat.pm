@@ -52,7 +52,7 @@ sub playerDefend($self) {
 sub playerHeal($self) {
     my $hpHealed = int(5 + rand(5)); # Between 5 and 10
     my $success = $self -> {player} -> heal($hpHealed);
-    $self -> {ui} -> heal($self -> {player}, $success);
+    $self -> {ui} -> heal($self -> {player}, $success, $hpHealed);
 }
 
 sub enemyTurn($self) {
