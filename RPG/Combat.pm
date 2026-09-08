@@ -37,25 +37,26 @@ sub performAction($self, $action) {
 }
 
 sub playerAttack($self) {
-    my $damage = $self -> {player} -> attackPower;
+    my $damage = int(4 + rand(6)); # Between 4 and 10 damage
     $self -> {enemy} -> takeDamage($damage);
     $self -> {ui} -> playerAttack($self -> {enemy}, $damage);
 }
 
 sub playerDefend($self) {
-    my $damage = 7; # TODO: Un-hardcode later!
+    my $damage = int(rand(7));
 
     $self -> {player} -> takeDamage($damage);
     $self -> {ui} -> playerDefend($self -> {player}, $damage);
 }
 
 sub playerHeal($self) {
-    my $success = $self -> {player} -> heal(10);
+    my $hpHealed = int(5 + rand(5)); # Between 5 and 10
+    my $success = $self -> {player} -> heal($hpHealed);
     $self -> {ui} -> heal($self -> {player}, $success);
 }
 
 sub enemyTurn($self) {
-    my $damage = $self -> {enemy} -> attackPower;
+    my $damage = int(4 + rand(6));
     $self -> {player} -> takeDamage($damage);
     $self -> {ui} -> enemyAttack($self -> {player}, $damage);
 }
