@@ -2,7 +2,7 @@ package RPG::Combat;
 
 use strict;
 use warnings;
-use feature 'signatures';
+use feature qw(say signatures);
 
 # Constructor
 sub new($class, %args) {
@@ -36,6 +36,11 @@ sub performAction($self, $action) {
     $self -> playerAttack if $action eq "attack";
     $self -> playerDefend if $action eq "defend";
     $self -> playerHeal   if $action eq "heal";
+
+    if ($action eq "invalid") {
+        say("Invalid action, try again!");
+        $self -> {ui} -> getAction();
+    }
 }
 
 sub playerAttack($self) {
