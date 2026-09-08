@@ -80,7 +80,7 @@ sub heal($self, $player, $success) {
     if ($success) {
         print(
             "You call for the POWER OF THE GODS. They are amenable to your prayer.\n",
-            "You now have " . $player -> {hp} . " HP.\n"
+            "You now have " . $player -> {hp} . " HP.\n\n"
         );
     }
 
