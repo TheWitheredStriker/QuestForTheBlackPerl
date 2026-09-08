@@ -25,6 +25,8 @@ sub run($self) {
 
         last unless $self -> {enemy} -> isAlive;
         $self -> enemyTurn;
+        
+        $self -> {ui} -> status($self -> {player}, $self -> {enemy});
     }
 }
 
